@@ -1,28 +1,28 @@
-# そもそも RuboCopu とは何か
+# はじめに
 
-Rubocop は Ruby の静的コード解析ツールです。[Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) で概説されているガイドラインの多くが強制されるでしょう。
+Rubocop は Ruby の静的コード解析ツールです。導入したらすぐに [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) で取り扱われているガイドラインのほとんどが適用されるでしょう。
 
 それらの振舞いのほとんどは様々な設定オプションによって微調整が可能です。
 
 コードの問題を指摘することの他に Rubocop は自動的にいくつかの問題を修正することもできます。
 
-# 導入
+## 導入
 
-RuboCop の導入は標準的な以下の方法になります。
+RuboCop の標準的な導入の方法は以下の通りです。
 
     $ gem install rubocop
 
-もし、bundler を使って導入する場合は Gemfile では require する必要はありません。
+もし、bundler を使って導入する場合 Gemfile において require する必要はありません。
 
     gem 'rubocop', require: false
 
-# 基本的な使い方
+## 基本的な使い方
 
 引数無しで `rubocop` を実行するとカレントディレクトリにある全ての Ruby ソースファイルをチェックします。
 
     $ rubocop
 
-別の方法として、チェックするファイルやディレクトリのリストを `rubocop` に渡すことができます。
+別の方法として、チェックするファイルやディレクトリのリストを `rubocop` に渡すこともできます。
 
     $ rubocop app spec lib/something.rb
 
@@ -56,11 +56,11 @@ Rubocop を実行すると以下のレポートを出力するでしょう。
     
     1 file inspected, 4 offenses detected
 
-されに詳細なチェックを行なうためのコマンドラインオプションは
+さらに詳細なチェックを行なうためのコマンドラインオプションは
 
     $ rubocop -h
 
-で確認しましょう。
+の出力を参照して下さい。
 
 # Cops
 
@@ -86,11 +86,11 @@ lint cops のいずれかを disable にすることは一般的には悪い考�
 
 ## Rails
 
-Rails cops は Ruby on Rails フレームワーク固有のものです。style あるいは lint cops とは違い、デフォルトでは使用されず、使う事を明示する必要がある。
+Rails cops は Ruby on Rails フレームワーク固有のものです。style あるいは lint cops とは違い、デフォルトでは使用されず、使う事を明示する必要があります。
 
     $ rubocop -R
 
-あるいは 以下のディレクティブをあなたの `.rubocop.yml` に記載する必要がある。
+あるいは以下のディレクティブをあなたの `.rubocop.yml` に記載する必要があります。
 
     AllCops:
       RunRailsCops: true
@@ -109,7 +109,7 @@ Rubocop の挙動は .rubocop.yml という設定ファイルによって制御�
     Metrics/LineLength:
         Max: 99
 
-注：cop の名前の修飾子 (例えば Style) が推奨されているが全ての type の中で cop の名前が一意であれば必ずしもそうしなければならない訳ではない。
+注：cop の名前の修飾子 (例えば Style) が推奨されていますが全ての type の中で cop の名前が一意であれば必ずしもそうしなければならない訳ではありません。
 
 ## 継承
 
@@ -139,7 +139,7 @@ Rubocop は実行されたディレクトリ、あるいはコマンドライン
 
 デフォルトで探索対象となっていないファイルを対象とするには、コマンドライン引数でそれらを渡すか、 AllCops/Include の下にそれらをエントリに追加する必要があります。ファイルおよびディレクトリは AllCops/Exclude によって無視することもできます。
 
-ここに Rails プロジェクトのために使われる例を示す。
+以下は Rails プロジェクトのために使われる例です。
 
     AllCops:
       Include:
@@ -154,7 +154,7 @@ Rubocop は実行されたディレクトリ、あるいはコマンドライン
     # other configuration
     # ...
 
-ファイルやディレクトリは .rubocop.yml からの相対位置として記述される。
+ファイルやディレクトリは .rubocop.yml からの相対位置として記述されます。
 
 注: Rakefile のようにファイル名のみのパターンは任意のディレクトリにおいてマッチするがこのパターンスタイルは非推奨です。任意のディレクトリにおいてファイル名をマッチさせる正しい方法はカレントを含めた `**/Rakefile` という書き方です。
 
